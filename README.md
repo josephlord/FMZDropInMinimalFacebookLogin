@@ -41,12 +41,12 @@ instead:
 ```swift
 MinimalFacebook.currentConfig =
     MinimalFacebook.Config(
-        getTokenStringFromKeychain: { keyChain.getString(key: "com.pulselive.FacebookLoginTokenString") },
+        getTokenStringFromKeychain: { keyChain.getString(key: "FacebookLoginTokenString") },
         setTokenStringToKeychain: {
             if let token = $0 {
-                _ = keyChain.setString(token, key: "com.pulselive.FacebookLoginTokenString")
+                _ = keyChain.setString(token, key: "FacebookLoginTokenString")
             } else {
-                keyChain.removeString(key: "com.pulselive.FacebookLoginTokenString")
+                keyChain.removeString(key: "FacebookLoginTokenString")
             }
         },
         openUrl: { UIApplication.shared.open($0, options: [:]) })
