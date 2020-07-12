@@ -10,6 +10,7 @@ public struct AccessToken : Hashable {
     }
 
     public var tokenString: String
+    public static var isCurrentAccessTokenActive: Bool { current != nil }
     
     init(token: String) {
         tokenString = token

@@ -4,7 +4,9 @@ Not yet production tested but a very simple minimal replacement for the Facebook
 monster but capable of bringing half the apps on the planet to a crashing halt at launch. It should also reduce app
 download sizes by some megabytes.
 
-Feature set is limited to logging in and out in a very similar way to the FacebookSDKs work.
+Feature set is limited to logging in and out in a very similar way to the FacebookSDKs plus basic GraphRequest
+functionality although that GraphRequest feature has not been tested in any way at all at the point of committing it but it
+builds and launches in a project I tried it in with these additional features/tweaks.
 
 Naming is because I don't like Mark Zuckerburg.
 
@@ -39,12 +41,12 @@ instead:
 ```swift
 MinimalFacebook.currentConfig =
     MinimalFacebook.Config(
-        getTokenStringFromKeychain: { PLKeyChain().getString(key: "com.pulselive.FacebookLoginTokenString") },
+        getTokenStringFromKeychain: { keyChain.getString(key: "com.pulselive.FacebookLoginTokenString") },
         setTokenStringToKeychain: {
             if let token = $0 {
-                _ = PLKeyChain().setString(token, key: "com.pulselive.FacebookLoginTokenString")
+                _ = keyChain.setString(token, key: "com.pulselive.FacebookLoginTokenString")
             } else {
-                PLKeyChain().removeString(key: "com.pulselive.FacebookLoginTokenString")
+                keyChain.removeString(key: "com.pulselive.FacebookLoginTokenString")
             }
         },
         openUrl: { UIApplication.shared.open($0, options: [:]) })
