@@ -62,7 +62,8 @@ if AccessToken.current != nil {
 ```
 You need to provide closures to openUrls (for iOS 9,10,11) and also to read and write to the keychain (because the Apple APIs
 are clunky and I didn't want to add another dependency when you already likely have wrappers in your project). The
-`setTokenStringToKeyChain` closure should remove the value when a nil argument is passed in. 
+`setTokenStringToKeyChain` closure should remove the value when a nil argument is passed in.
+
 5. Build and see if it has everything that you use. It may build and run correctly at first use.
 6. If it doesn't run you may have some fix up to do. Some types may have changed so it may be that you can remove
 some explicit types. You may also be using features that are not supported in this. In which case some reimplementation
